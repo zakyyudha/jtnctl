@@ -57,21 +57,25 @@ Use "jtnctl [command] --help" for more information about a command.
 ```bash
 ~ $ jtnctl config set namespace=tds-stage
 ```
+![config-set](./docs/config-set.gif)
 
 ### Simplify 'kubectl port-forward' command
 ```bash
 ~ $ jtnctl port-forward [service-name] [destination:source]
 ```
+![config-set](./docs/port-forward.gif)
 
 ### Simplify 'kubectl logs' command
 ```bash
 ~ $ jtnctl logs [pod-name] [--follow] [--tail=10]
 ```
+![config-set](./docs/logs.gif)
 
 ### Simplify 'kubectl exec' command
 ```bash
 ~ $ jtnctl exec [pod-name] -it -- /bin/bash
 ```
+![config-set](./docs/exec.gif)
 
 ## Configuration
 `jtnctl` allows you to `config` a default namespace using the set command. For example:

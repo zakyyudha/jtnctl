@@ -1,6 +1,11 @@
 # jtnctl - Simplify kubectl Commands
 
 `jtnctl` is a command-line interface (CLI) tool that simplifies the execution of `kubectl` commands, such as 'logs', 'port-forward', and 'exec'  It allows you to streamline Kubernetes operations with ease.
+## Requirements
+
+Before using `jtnctl`, make sure you have the following prerequisites installed on your system:
+
+- **kubectl:** The Kubernetes command-line tool (`kubectl`) is required to interact with Kubernetes clusters. You can download and install `kubectl` by following the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ## Installation
 
@@ -33,7 +38,7 @@ jtnctl --help
 
 ### Set the default namespace (e.g., tds-stage)
 ```bash
-jtnctl set namespace=tds-stage
+jtnctl config set namespace=tds-stage
 ```
 
 ### Simplify 'kubectl logs' command
@@ -54,7 +59,7 @@ jtnctl port-forward [service-name] [destination:source]
 ## Configuration
 `jtnctl` allows you to `config` a default namespace using the set command. For example:
 ```bash
-jtnctl config namespace=tds-stage
+jtnctl config set namespace=tds-stage
 ```
 
 The configuration is stored in a `~/.config/jtnctl/config.yaml` file. You can modify it directly or use the set command to update values

@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 
@@ -56,6 +57,11 @@ func LoadConfig() (*Config, error) {
 		return nil, err
 	}
 
+	err = createDefaultConfigFile(configFile)
+	if err != nil {
+		return nil, err
+	}
+
 	data, err := os.ReadFile(configFile)
 	if err != nil {
 		return nil, err
@@ -99,4 +105,28 @@ func getConfigFilePath() (string, error) {
 	configFile := filepath.Join(configDir, "config.yaml")
 
 	return configFile, nil
+}
+
+func createDefaultConfigFile(configFile string) error {
+	configDir := filepath.Dir(configFile)
+
+	// Create the config directory if it doesn't exist
+	err := os.MkdirAll(configDir, 0700)
+	if err != nil {
+		return err
+	}
+
+	// Check if the config file exists
+	_, err = os.Stat(configFile)
+	if err != nil && os.IsNotExist(err) {
+		// The file does not exist, create it with default values
+		defaultConfig := []byte(`namespace: tds-stage`) // Set default values here
+
+		err := ioutil.WriteFile(configFile, defaultConfig, 0644)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

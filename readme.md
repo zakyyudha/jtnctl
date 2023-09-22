@@ -17,49 +17,66 @@ Download the latest release for your platform from the [Releases](https://github
 
 ```bash
 # Replace with the actual release version and your OS/architecture
-wget https://github.com/zakyyudha/jtnctl/releases/download/v1.0.0/jtnctl_v1.0.0_linux_amd64 -O jtnctl
-chmod +x jtnctl
-sudo mv jtnctl /usr/local/bin/
+~ $ wget https://github.com/zakyyudha/jtnctl/releases/download/v1.0.0/jtnctl_v1.0.0_linux_amd64 -O jtnctl
+~ $ chmod +x jtnctl
+~ $ sudo mv jtnctl /usr/local/bin/
 ```
 
 ### Option 2: Building from Source
 Clone the repository and build jtnctl:
 ```bash
-git clone https://github.com/zakyyudha/jtnctl.git
-cd jtnctl
-go build -o jtnctl main.go
+~ $ git clone https://github.com/zakyyudha/jtnctl.git
+~ $ cd jtnctl
+~ $ go build -o jtnctl main.go
 ```
 
 ## Usage
 ### Display available commands and options
 ```bash
-jtnctl --help
+~ $ jtnctl --help
+
+jtnctl is a CLI tool for simplifying kubectl commands
+
+Usage:
+  jtnctl [command]
+
+Available Commands:
+  config       Manage configuration settings
+  exec         Execute a command in an active service
+  help         Help about any command
+  logs         View logs of a Kubernetes pod
+  port-forward Forward ports for a Kubernetes service
+
+Flags:
+  -h, --help   help for jtnctl
+
+Use "jtnctl [command] --help" for more information about a command.
 ```
 
 ### Set the default namespace (e.g., tds-stage)
 ```bash
-jtnctl config set namespace=tds-stage
-```
-
-### Simplify 'kubectl logs' command
-```bash
-jtnctl logs [pod-name] [--follow] [--tail=10]
-```
-
-### Simplify 'kubectl exec' command
-```bash
-jtnctl exec [pod-name] -it -- /bin/bash
+~ $ jtnctl config set namespace=tds-stage
 ```
 
 ### Simplify 'kubectl port-forward' command
 ```bash
-jtnctl port-forward [service-name] [destination:source]
+~ $ jtnctl port-forward [service-name] [destination:source]
+```
+
+### Simplify 'kubectl logs' command
+```bash
+~ $ jtnctl logs [pod-name] [--follow] [--tail=10]
+```
+
+### Simplify 'kubectl exec' command
+```bash
+~ $ jtnctl exec [pod-name] -it -- /bin/bash
 ```
 
 ## Configuration
 `jtnctl` allows you to `config` a default namespace using the set command. For example:
 ```bash
-jtnctl config set namespace=tds-stage
+~ $ jtnctl config set namespace=tds-stage
 ```
 
 The configuration is stored in a `~/.config/jtnctl/config.yaml` file. You can modify it directly or use the set command to update values

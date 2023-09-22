@@ -10,7 +10,7 @@ import (
 
 var execCmd = &cobra.Command{
 	Use:   "exec [pod-name] -- [command] [args...]",
-	Short: "Execute a command in an active service",
+	Short: "Execute a command in an active service with interactive mode on",
 	Long:  "Execute a command in an active Kubernetes service's container. This command is used to run arbitrary commands within a container.",
 	Args:  cobra.MinimumNArgs(1), // Require at least one argument (pod-name)
 	Run: func(cmd *cobra.Command, args []string) {

@@ -15,8 +15,15 @@ You can install `jtnctl` using the following methods:
 
 Download the latest release for your platform from the [Releases](https://github.com/zakyyudha/jtnctl/releases) page.
 
+#### MacOS
 ```bash
-# Replace with the actual release version and your OS/architecture
+~ $ wget https://github.com/zakyyudha/jtnctl/releases/download/v1.0.0/jtnctl_v1.0.0_darwin -O jtnctl
+~ $ chmod +x jtnctl
+~ $ sudo mv jtnctl /usr/local/bin/
+```
+
+#### Linux
+```bash
 ~ $ wget https://github.com/zakyyudha/jtnctl/releases/download/v1.0.0/jtnctl_v1.0.0_linux_amd64 -O jtnctl
 ~ $ chmod +x jtnctl
 ~ $ sudo mv jtnctl /usr/local/bin/
